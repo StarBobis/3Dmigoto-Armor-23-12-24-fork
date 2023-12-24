@@ -11,9 +11,13 @@
 // http://go.microsoft.com/fwlink/?LinkId=248929
 //--------------------------------------------------------------------------------------
 
+
 #include "pch.h"
 #include "Geometry.h"
 #include "Bezier.h"
+
+#include <stdexcept>
+#include <typeinfo>
 
 using namespace DirectX;
 

@@ -1,6 +1,8 @@
 // Include before util.h (or any header that includes util.h) to get pretty
 // version of LockResourceCreationMode:
 #include "lock.h"
+#include <stdexcept>
+#include <typeinfo>
 
 #include "D3D11Wrapper.h"
 #include "FrameAnalysis.h"

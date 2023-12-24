@@ -1,6 +1,7 @@
 // This Overlay class is to encapsulate all the on-screen drawing code,
 // including creating and using the DirectXTK code.
-
+#include <stdexcept>
+#include <typeinfo>
 #include "Overlay.h"
 
 #include <DirectXColors.h>

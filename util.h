@@ -1,5 +1,6 @@
 #pragma once
-
+#include <stdexcept>
+#include <typeinfo>
 #include <ctype.h>
 #include <wchar.h>
 #include <string>
