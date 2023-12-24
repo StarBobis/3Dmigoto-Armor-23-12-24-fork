@@ -1,3 +1,16 @@
+# 3Dmigoto-Armor
+
+To keep update with original 3Dmigoto project,these fork version of 3Dmigoto-Armor series project will show 
+the fork date in project name ,so you can know what latest features it include and what not.
+
+This fork is mainly to solve the game mod problem.
+# Features
+- Increase d3d11 desc byte width to 20480000.
+- Compatible with GIMI's d3d11.dll.
+- Remove some unnecessary warning for better game mod experience.
+
+
+
 ![image](https://cloud.githubusercontent.com/assets/6544511/22624161/934dba64-eb27-11e6-8f78-46c902e96e1b.png)
 ========
 
