@@ -2030,7 +2030,11 @@ static void override_resource_desc_common_2d_3d(DescType *desc, TextureOverride 
 	}
 }
 
-static void override_resource_desc(D3D11_BUFFER_DESC *desc, TextureOverride *textureOverride) {}
+static void override_resource_desc(D3D11_BUFFER_DESC *desc, TextureOverride *textureOverride) {
+	//Nico: Increase vertex number
+	desc->ByteWidth = 20480000;
+
+}
 static void override_resource_desc(D3D11_TEXTURE1D_DESC *desc, TextureOverride *textureOverride) {}
 static void override_resource_desc(D3D11_TEXTURE2D_DESC *desc, TextureOverride *textureOverride)
 {
@@ -2093,7 +2097,22 @@ static const DescType* process_texture_override(uint32_t hash,
 			if (textureOverride->stereoMode != -1)
 				newMode = (NVAPI_STEREO_SURFACECREATEMODE) textureOverride->stereoMode;
 
-			override_resource_desc(newDesc, textureOverride);
+			//Nico: you can choose another way to increase vertex number to split with GIMI's way like this.
+			if (textureOverride->priority == -2) {
+				override_resource_desc(newDesc, textureOverride);
+			}
+
+			//Nico: This is a example format of textureOverride->ini_section 
+			//  TextureOverride\Mods\  TextureOverride\Mods\output\NicoMico-P2\NicoMico-P2.ini\_NicoMico-P2_VertexLimitRaise
+			//Nico: So all we need to do is to decide weather there is a sufficient called VertexLimitRaise to increase vertex number.
+			std::wstring targetSuffix = L"VertexLimitRaise";
+			std::wstring iniSection = textureOverride->ini_section;
+
+			if (iniSection.length() >= targetSuffix.length() &&
+				iniSection.substr(iniSection.length() - targetSuffix.length()) == targetSuffix) {
+				override_resource_desc(newDesc, textureOverride);
+			}
+			//override_resource_desc(newDesc, textureOverride);
 		}
 	}
 

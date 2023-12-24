@@ -2163,13 +2163,14 @@ static void check_shaderoverride_duplicates(bool duplicate, const wchar_t *id, S
 		allow_duplicates = allow_duplicates && override->allow_duplicate_hashes;
 	}
 
-	if (duplicate && !allow_duplicates) {
-		IniWarning("WARNING: Possible Mod Conflict: Duplicate ShaderOverride hash=%16llx\n"
-			   "[%S]\n"
-			   "[%S]\n"
-			   "If this is intentional, add allow_duplicate_hash=true or allow_duplicate_hash=overrule to suppress warning\n",
-			   hash, override->first_ini_section.c_str(), id);
-	}
+	//Nico: This warning is very annoying for both game mod player and author.
+	//if (duplicate && !allow_duplicates) {
+	//	IniWarning("WARNING: Possible Mod Conflict: Duplicate ShaderOverride hash=%16llx\n"
+	//		   "[%S]\n"
+	//		   "[%S]\n"
+	//		   "If this is intentional, add allow_duplicate_hash=true or allow_duplicate_hash=overrule to suppress warning\n",
+	//		   hash, override->first_ini_section.c_str(), id);
+	//}
 
 	override->allow_duplicate_hashes = allow_duplicates;
 }
