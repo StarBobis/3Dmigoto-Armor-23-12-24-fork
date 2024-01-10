@@ -11,7 +11,7 @@
 // Include before util.h (or any header that includes util.h) to get pretty
 // version of LockResourceCreationMode:
 #include "lock.h"
-
+#include <cwctype>
 #include "HackerDevice.h"
 #include "HookedDevice.h"
 #include "FrameAnalysis.h"
@@ -2123,9 +2123,24 @@ static const DescType* process_texture_override(uint32_t hash,
 					size_t secondLastUnderscore = str.rfind(L'_', lastUnderscore - 1);
 					std::wstring numberStr = str.substr(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1);
 
-					//Here the calculation algorithm is : POSITION width 12 , NORMAL width 12, TANGENT width 16, so total is 40
+					bool isNumber = true;
+					for (wchar_t c : numberStr) {
+						if (!std::iswdigit(c)) {
+							isNumber = false;
+							break;
+						}
+					}
+
+					if (isNumber) {
+						//Here the calculation algorithm is : POSITION width 12 , NORMAL width 12, TANGENT width 16, so total is 40
 					//But that 40 is only for universal Unity game,and other game might be different value.
-					breakNumber = std::stoi(numberStr) * 40;
+						breakNumber = std::stoi(numberStr) * 40;
+					}
+					else {
+						//if we can't parse with any number, we use GIMI's 400k as default?
+						breakNumber = 15200000; //16000000 = 380 * 1000 * 40  which is 400k
+					}
+					
 				}
 				catch (const std::exception& e) {
 					//if we can't parse with any number, we use GIMI's 400k as default?
