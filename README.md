@@ -18,6 +18,12 @@ the 40 magic value in code to fit your game.
 - Transfer to VS2022 ,PlatformToolsetV143, Win10SDK latest.
 - All my change code is commented with Nico: ,you can search Nico: in solution to find out what I have changed.
 
+# Discord
+You can send me feedback or ask question about 3Dmigoto source code in this discord channel:
+
+Server invite link£ºhttps://discord.gg/JEcWVKr7wu 
+
+
 # Acknowledgements
 Without their original 3dmigoto repo the game mod version will be impossible.
 Huge thanks to Chiri,DarkStarSword,bo3b and 3Dmigoto original author group.
