@@ -3337,6 +3337,11 @@ static void override_resource_desc_common_2d_3d(DescType *desc, TextureOverride 
 }
 
 static void override_resource_desc(::D3DVERTEXBUFFER_DESC *desc, TextureOverride *textureOverride) {}
+
+//Nico: here we addd a breakNumber version
+//static void override_resource_desc(::D3DVERTEXBUFFER_DESC* desc, TextureOverride* textureOverride,int breakNumber) {}
+
+
 static void override_resource_desc(::D3DINDEXBUFFER_DESC *desc, TextureOverride *textureOverride) {}
 static void override_resource_desc(D3D2DTEXTURE_DESC *desc, TextureOverride *textureOverride)
 {

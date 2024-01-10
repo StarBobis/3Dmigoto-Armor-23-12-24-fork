@@ -5,8 +5,14 @@ To keep update with original 3Dmigoto project,these fork version of 3Dmigoto-Arm
 the fork date in project name ,so you can know what latest features it include and what not.
 
 This fork is mainly to solve the game mod problem.
+# Core problem about VertexLimitRaise
+Currently we use 40(POSITION_12 + NORMAL_12 + TANGENT_16) as default vertex buffer size for a single vertex,
+but this may change in UE games,because UE game's d3d11 element bytewidth is totally different,so you may need to change
+the 40 magic value in code to fit your game. 
+
 # Features
-- Increase d3d11 desc byte width to 20480000.
+- Dynamic d3d11 desc byte increase with model's vertex number to avoid memory waste and avoid possible out of memory error.
+- Increase default d3d11 desc byte width to 400k(400 * 1000 * 40) as GIMI's design.
 - Compatible with GIMI's d3d11.dll.
 - Remove some unnecessary warning for better game mod experience.
 - Transfer to VS2022 ,PlatformToolsetV143, Win10SDK latest.

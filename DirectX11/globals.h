@@ -279,6 +279,10 @@ struct ShaderOverride {
 typedef std::unordered_map<UINT64, struct ShaderOverride> ShaderOverrideMap;
 
 struct TextureOverride {
+
+	//Nico: here we add a BreakNumber, used in VertexLimitRaise
+	int BreakNumber;
+
 	std::wstring ini_section;
 	int stereoMode;
 	int format;

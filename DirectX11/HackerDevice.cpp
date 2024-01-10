@@ -2032,9 +2032,11 @@ static void override_resource_desc_common_2d_3d(DescType *desc, TextureOverride 
 
 static void override_resource_desc(D3D11_BUFFER_DESC *desc, TextureOverride *textureOverride) {
 	//Nico: Increase vertex number
-	desc->ByteWidth = 20480000;
+	desc->ByteWidth = textureOverride->BreakNumber;
 
 }
+
+
 static void override_resource_desc(D3D11_TEXTURE1D_DESC *desc, TextureOverride *textureOverride) {}
 static void override_resource_desc(D3D11_TEXTURE2D_DESC *desc, TextureOverride *textureOverride)
 {
@@ -2110,6 +2112,29 @@ static const DescType* process_texture_override(uint32_t hash,
 
 			if (iniSection.length() >= targetSuffix.length() &&
 				iniSection.substr(iniSection.length() - targetSuffix.length()) == targetSuffix) {
+
+				
+				int breakNumber = 0;
+
+				try {
+					//eg:[TextureOverride_VB_22ebf6e3_65582_VertexLimitRaise]  here 66582 is the vertex number to break.
+					std::wstring str = iniSection;
+					size_t lastUnderscore = str.rfind(L'_');
+					size_t secondLastUnderscore = str.rfind(L'_', lastUnderscore - 1);
+					std::wstring numberStr = str.substr(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1);
+
+					//Here the calculation algorithm is : POSITION width 12 , NORMAL width 12, TANGENT width 16, so total is 40
+					//But that 40 is only for universal Unity game,and other game might be different value.
+					breakNumber = std::stoi(numberStr) * 40;
+				}
+				catch (const std::exception& e) {
+					//if we can't parse with any number, we use GIMI's 400k as default?
+					breakNumber = 16000000; //16000000 = 400 * 1000 * 40  which is 400k
+				}
+
+				//here we pass a number to increase, interesting, isn't it? we save a lot of memory by this way
+				//and we can control the increase size just from our model and ini
+				textureOverride->BreakNumber = breakNumber;
 				override_resource_desc(newDesc, textureOverride);
 			}
 			//override_resource_desc(newDesc, textureOverride);
