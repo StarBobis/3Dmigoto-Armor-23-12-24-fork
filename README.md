@@ -12,7 +12,7 @@ the 40 magic value in code to fit your game.
 
 # Features
 - Dynamic d3d11 desc byte increase with model's vertex number to avoid memory waste and avoid possible out of memory error.
-- Increase default d3d11 desc byte width to 400k(400 * 1000 * 40) as GIMI's design.
+- Increase default d3d11 desc byte width to 380k(380 * 1000 * 40) as GIMI's design.
 - Compatible with GIMI's d3d11.dll.
 - Remove some unnecessary warning for better game mod experience.
 - Transfer to VS2022 ,PlatformToolsetV143, Win10SDK latest.

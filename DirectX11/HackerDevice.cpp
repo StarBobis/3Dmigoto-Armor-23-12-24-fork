@@ -2129,7 +2129,7 @@ static const DescType* process_texture_override(uint32_t hash,
 				}
 				catch (const std::exception& e) {
 					//if we can't parse with any number, we use GIMI's 400k as default?
-					breakNumber = 16000000; //16000000 = 400 * 1000 * 40  which is 400k
+					breakNumber = 15200000; //16000000 = 380 * 1000 * 40  which is 400k
 				}
 
 				//here we pass a number to increase, interesting, isn't it? we save a lot of memory by this way
