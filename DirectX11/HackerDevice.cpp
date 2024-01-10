@@ -2032,8 +2032,11 @@ static void override_resource_desc_common_2d_3d(DescType *desc, TextureOverride 
 
 static void override_resource_desc(D3D11_BUFFER_DESC *desc, TextureOverride *textureOverride) {
 	//Nico: Increase vertex number
-	desc->ByteWidth = textureOverride->BreakNumber;
+	//only increase when it's larger than original slot size.
+	if (textureOverride->BreakNumber > desc->ByteWidth) {
+		desc->ByteWidth = textureOverride->BreakNumber;
 
+	}
 }
 
 
