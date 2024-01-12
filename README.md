@@ -1,3 +1,6 @@
+# Open source is a kind of sin
+No one will thanks you for open source these scripts, they just use your scripts and at the same time verbally attacking you,when i open source reverse scripts seems everyone want to insult me to show their fake ethical, so my project will never be open source again, may be some compiled exe will be published here but never source code again.
+
 # 3Dmigoto-Armor
 Latest fork date: 2023-12-24
 
@@ -21,7 +24,7 @@ the 40 magic value in code to fit your game.
 # Discord
 You can send me feedback or ask question about 3Dmigoto source code in this discord channel:
 
-Server invite link£ºhttps://discord.gg/JEcWVKr7wu 
+Server invite linkÂ£Âºhttps://discord.gg/JEcWVKr7wu 
 
 
 # Acknowledgements
